@@ -2,12 +2,15 @@ var webpack = require('webpack'),
     path = require('path');
 
 var uglify = new webpack.optimize.UglifyJsPlugin({
-    // compress: false,
+    // compress: {
+    //     dead_code: true
+    // },
     // mangle: false,
     // beautify: true
 });
 
 var plugins = [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
         name: 'common',
         minChunks: 2
